@@ -1,16 +1,14 @@
 package org.apache.wicket.extensions.sitemap.example;
 
 
-import org.apache.wicket.PageParameters;
+import java.util.Date;
+
 import org.apache.wicket.Session;
 import org.apache.wicket.extensions.sitemap.BasicSiteMapEntry;
 import org.apache.wicket.extensions.sitemap.IOffsetSiteMapEntryIterable;
 import org.apache.wicket.extensions.sitemap.ISiteMapEntry;
 import org.apache.wicket.extensions.sitemap.SiteMapIndex;
-import org.apache.wicket.request.target.coding.IRequestTargetUrlCodingStrategy;
-import org.apache.wicket.request.target.component.BookmarkablePageRequestTarget;
-
-import java.util.Date;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
 
 @SuppressWarnings({"NonSerializableFieldInSerializableClass"})
 public class ExampleSiteMap extends SiteMapIndex {
@@ -19,9 +17,9 @@ public class ExampleSiteMap extends SiteMapIndex {
 
     Session sess;
 
-    public ExampleSiteMap(final PageParameters parameters) {
-        super(parameters);
-    }
+//    public ExampleSiteMap(final PageParameters parameters) {
+//        super(parameters);
+//    }
 
 
     @Override
@@ -39,11 +37,13 @@ public class ExampleSiteMap extends SiteMapIndex {
                     }
 
                     public ISiteMapEntry next() {
-                        PageParameters pageParameters = new PageParameters();
-                        pageParameters.put("number", numcalled + startIndex);
-                        numcalled++;
-                        final CharSequence url = WebApplicationWithSiteMap.EXAMPLE_PAGE_MOUNTED_AT.encode(new BookmarkablePageRequestTarget(ExamplePage.class, pageParameters));
-                        return new BasicSiteMapEntry(fullUrlFrom(url));
+//                        PageParameters pageParameters = new PageParameters();
+//                        pageParameters.put("number", numcalled + startIndex);
+//                        numcalled++;
+//                        final CharSequence url = WebApplicationWithSiteMap.EXAMPLE_PAGE_MOUNTED_AT.encode(new BookmarkablePageRequestTarget(ExamplePage.class, pageParameters));
+//                        return new BasicSiteMapEntry(fullUrlFrom(url));
+                        return new BasicSiteMapEntry(fullUrlFrom("url"));
+
                     }
 
                     public void remove() {
@@ -72,10 +72,10 @@ public class ExampleSiteMap extends SiteMapIndex {
         }};
     }
 
-    @Override
-    public IRequestTargetUrlCodingStrategy mountedAt() {
-        return WebApplicationWithSiteMap.SITE_MAP_MOUNTED_AT;
-    }
+//    @Override
+//    public IRequestTargetUrlCodingStrategy mountedAt() {
+//        return WebApplicationWithSiteMap.SITE_MAP_MOUNTED_AT;
+//    }
 
     private String fullUrlFrom(CharSequence charSequence) {
         return getDomain() + "/" + charSequence.toString();
