@@ -59,7 +59,7 @@ public class TreeReader
 		}
 	}
 
-	public static ISerializedObjectTree fromString(String asString)
+	public static ISerializedObjectTree fromString(String asString) throws IOException
 	{
 		List<Line> lines = new ArrayList<Line>();
 		String[] textLines = Strings.split(asString, '\n');
@@ -80,17 +80,12 @@ public class TreeReader
 					parent.children.add(sub);
 					parent=sub;
 				} else {
-					if (l.indent<last.indent) {
-						parent=parent.parent.parent;
-						IndentedLines sub=new IndentedLines(parent,l);
-						parent.children.add(sub);
-						parent=sub;
-					} else {
+					for (int i=0,s=last.indent-l.indent;i<=s;i++) {
 						parent=parent.parent;
-						IndentedLines sub=new IndentedLines(parent,l);
-						parent.children.add(sub);
-						parent=sub;
 					}
+					IndentedLines sub=new IndentedLines(parent,l);
+					parent.children.add(sub);
+					parent=sub;
 				}
 				last=l;
 			}
@@ -101,7 +96,7 @@ public class TreeReader
 			
 			return parent.asObjectTree();
 		}
-		return null;
+		throw new IOException("empty file");
 	}
 
 
@@ -161,6 +156,9 @@ public class TreeReader
 		{
 			try
 			{
+				if (typeName.startsWith(".")) {
+					typeName=TreeReader.class.getPackage().getName()+typeName;
+				}
 				return Class.forName(typeName);
 			}
 			catch (ClassNotFoundException e)

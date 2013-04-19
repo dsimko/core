@@ -20,10 +20,10 @@
 
 	<modules>
 		<module>lightbox2-parent</module>
+                <module>jqplot-parent</module>
 		<module>annotation</module> 
 		<module>autocomplete-tagit-parent</module>
 		<module>browserid-parent</module>
-		<module>console-parent</module>
 		<module>datatables-parent</module>
 		<module>flot-parent</module>
 		<module>gae-initializer-parent</module>
@@ -37,9 +37,11 @@
 		<module>jquery-parent</module>
 		<module>jslibraries</module>
 		<module>jsr303-parent</module>
+        <module>jwicket-parent</module>
 		<module>mbeanview-parent</module>
 		<module>minis-parent</module>
 		<module>modalx-parent</module>
+		<module>objectautocomplete-parent</module>
 		<module>openlayers-parent</module>
 		<module>phonebook</module>
 		<module>plugin</module>
@@ -65,18 +67,25 @@
 		<module>wicketstuff-springreference-parent</module>
 		<module>wicket-security-parent</module>
 
+		<module>yui-parent</module>
+		<module>jasperreports-parent</module>
+		<module>editable-grid-parent</module>
 
-		<!-- TODO: port these module to wicket 6 -->
+<!-- 
+Commented because its build fails
+<module>console-parent</module>
+-->
+ 
+    <!-- TODO: port these module to wicket 6 -->
 
-		<!-- <module>calendarviews-parent</module> -->
-		<!-- <module>client-and-server-validation</module> -->
+        <!-- <module>calendarviews-parent</module> -->
+        <!-- <module>client-and-server-validation</module> -->
 		<!-- <module>eidogo-parent</module> -->
 		<!-- <module>jasperreports-parent</module> -->
 
 		<!-- <module>theme-parent</module> -->
 		<!-- <module>mootools-meiomask-parent</module> -->
-		<!-- <module>objectautocomplete-parent</module> -->
-
+		
 		<!-- <module>yav-parent</module> -->
 		<!-- <module>maven-support</module> -->
 
