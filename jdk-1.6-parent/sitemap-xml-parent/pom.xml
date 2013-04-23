@@ -12,6 +12,9 @@
         <developer>
             <name>Andreas Petersson</name>
         </developer>
+        <developer>
+            <name>Dan Simko</name>
+        </developer>
     </developers>
     <artifactId>sitemap-xml-parent</artifactId>
     <packaging>pom</packaging>
